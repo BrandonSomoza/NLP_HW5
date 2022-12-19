@@ -97,25 +97,29 @@ with open(sys.argv[1] ,'r') as read_file:
             if len(line) == 0:
                 write_file.write('\n')
             else:
-                curr_word, curr_pos, curr_bio = line.split()
-                curr_cap    = check_cap_word(i, tokens)
-                prev_word  = get_prev_word(i, tokens)
-                prev_pos   = get_prev_pos(i, tokens)
-                prev_cap   = check_prev_cap_word(i, tokens)
-                prev_prev_word = get_prev_word(i - 1, tokens)
-                prev_prev_pos  = get_prev_pos(i - 1, tokens)
-                prev_prev_cap  = check_prev_cap_word(i - 1, tokens)
-                next_word  = get_next_word(i, tokens)
-                next_pos   = get_next_pos(i, tokens)
-                next_cap   = check_next_cap_word(i, tokens)
-                next_next_word = get_next_word(i + 1, tokens)
-                next_next_pos  = get_next_pos(i + 1, tokens)
-                next_next_cap  = check_next_cap_word(i + 1, tokens)
+                cur_word, cur_pos, cur_bio = line.split()
+                cur_cap    = 'cur_cap='   + check_cap_word(i, tokens)
 
-                line = '\t'.join([curr_word, curr_pos, curr_cap, prev_word, \
+                prev_word  = 'prev_word=' + get_prev_word(i, tokens)
+                prev_pos   = 'prev_pos='  + get_prev_pos(i, tokens)
+                prev_cap   = 'prev_cap='  + check_prev_cap_word(i, tokens)
+
+                next_word  = 'next_word=' + get_next_word(i, tokens)
+                next_pos   = 'next_pos='  + get_next_pos(i, tokens)
+                next_cap   = 'next_cap='  + check_next_cap_word(i, tokens)
+
+                pp_word = 'pp_word=' + get_prev_word(i - 1, tokens)
+                pp_pos  = 'pp_pos='  + get_prev_pos(i - 1, tokens)
+                pp_cap  = 'pp_cap='  + check_prev_cap_word(i - 1, tokens)
+
+                nn_word = 'nn_word=' + get_next_word(i + 1, tokens)
+                nn_pos  = 'nn_pos='  + get_next_pos(i + 1, tokens)
+                nn_cap  = 'nn_cap='  + check_next_cap_word(i + 1, tokens)
+
+                line = '\t'.join([cur_word, cur_pos, cur_cap, prev_word, \
                                   prev_pos, prev_cap, next_word, next_pos, \
-                                  next_cap, prev_prev_word, prev_prev_pos, prev_prev_cap, next_next_word,\
-                                  next_next_pos, next_next_cap])
+                                  next_cap, pp_word, pp_pos, pp_cap, nn_word,\
+                                  nn_pos, nn_cap, cur_bio])
                 write_file.write(line + '\n')
 
 # open test file (third argument in commandline) and writes out the output to test.feature as per the instructions
@@ -127,23 +131,27 @@ with open(sys.argv[2], 'r') as read_file:
             if len(line) == 0:
                 write_file.write('\n')
             else:
-                curr_word, curr_pos = line.split()
-                curr_cap   = check_cap_word(i, tokens)
-                prev_word = get_prev_word(i, tokens)
-                prev_pos  = get_prev_pos(i, tokens)
-                prev_cap  = check_prev_cap_word(i, tokens)
-                prev_prev_word = get_prev_word(i - 1, tokens)
-                prev_prev_pos  = get_prev_pos(i - 1, tokens)
-                prev_prev_cap  = check_prev_cap_word(i - 1, tokens)
-                next_word = get_next_word(i, tokens)
-                next_pos  = get_next_pos(i, tokens)
-                next_cap  = check_next_cap_word(i, tokens)
-                next_next_word = get_next_word(i + 1, tokens)
-                next_next_pos  = get_next_pos(i + 1, tokens)
-                next_next_cap  = check_next_cap_word(i + 1, tokens)
+                cur_word, cur_pos = line.split()
+                cur_bio   = 'cur_bio=##'
+                cur_cap   = 'cur_cap='     + check_cap_word(i, tokens)
 
-                line = '\t'.join([curr_word, curr_pos, curr_cap, prev_word, \
+                next_word = 'next_word='   + get_next_word(i, tokens)
+                next_pos  = 'next_pos='    + get_next_pos(i, tokens)
+                prev_word = 'prev_word='   + get_prev_word(i, tokens)
+                prev_pos  = 'prev_pos='    + get_prev_pos(i, tokens)
+                prev_cap  = 'prev_cap='    + check_prev_cap_word(i, tokens)
+                next_cap  = 'next_cap='    + check_next_cap_word(i, tokens)
+
+                pp_word = 'pp_word=' + get_prev_word(i - 1, tokens)
+                pp_pos  = 'pp_pos='  + get_prev_pos(i - 1, tokens)
+                pp_cap  = 'pp_cap='  + check_prev_cap_word(i - 1, tokens)
+
+                nn_word = 'nn_word=' + get_next_word(i + 1, tokens)
+                nn_pos  = 'nn_pos='  + get_next_pos(i + 1, tokens)
+                nn_cap  = 'nn_cap='  + check_next_cap_word(i + 1, tokens)
+
+                line = '\t'.join([cur_word, cur_pos, cur_cap, prev_word, \
                                   prev_pos, prev_cap, next_word, next_pos, \
-                                  next_cap, prev_prev_word, prev_prev_pos, prev_prev_cap, next_next_word,\
-                                  next_next_pos, next_next_cap, curr_bio])
+                                  next_cap, pp_word, pp_pos, pp_cap, nn_word,\
+                                  nn_pos, nn_cap, cur_bio])
                 write_file.write(line + '\n')
