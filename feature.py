@@ -112,8 +112,10 @@ with open(sys.argv[1] ,'r') as read_file:
                 next_next_pos  = get_next_pos(i + 1, tokens)
                 next_next_cap  = check_next_cap_word(i + 1, tokens)
 
-                line = '\t'.join([curr_word, curr_pos, curr_cap, prev_word, prev_pos, prev_cap, next_word, next_pos, next_cap, prev_prev_word, \
-                                    prev_prev_pos, prev_prev_cap, next_next_word, next_next_pos, next_next_cap, curr_bio])
+                line = '\t'.join([curr_word, curr_pos, curr_cap, prev_word, \
+                                  prev_pos, prev_cap, next_word, next_pos, \
+                                  next_cap, prev_prev_word, prev_prev_pos, prev_prev_cap, next_next_word,\
+                                  next_next_pos, next_next_cap])
                 write_file.write(line + '\n')
 
 # open test file (third argument in commandline) and writes out the output to test.feature as per the instructions
@@ -140,6 +142,8 @@ with open(sys.argv[2], 'r') as read_file:
                 next_next_pos  = get_next_pos(i + 1, tokens)
                 next_next_cap  = check_next_cap_word(i + 1, tokens)
 
-                line = '\t'.join([curr_word, curr_pos, curr_cap, prev_word, prev_pos, prev_cap, next_word, next_pos, next_cap, \
-                                prev_prev_word, prev_prev_pos, prev_prev_cap, next_next_word, next_next_pos, next_next_cap])
+                line = '\t'.join([curr_word, curr_pos, curr_cap, prev_word, \
+                                  prev_pos, prev_cap, next_word, next_pos, \
+                                  next_cap, prev_prev_word, prev_prev_pos, prev_prev_cap, next_next_word,\
+                                  next_next_pos, next_next_cap, curr_bio])
                 write_file.write(line + '\n')
